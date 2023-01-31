@@ -1,0 +1,13 @@
+body{
+    display: grid;
+    place-items: center;
+}
+
+#container{
+    height: 500px;
+    margin-top: 500px;
+}
+
+#container>span{
+    display: inline-block;
+}

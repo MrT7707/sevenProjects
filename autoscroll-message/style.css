@@ -1,0 +1,32 @@
+.comtain{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+.message{
+    width: 100%;
+    overflow: hidden;
+    background-color: #e8e8e8;
+    border-radius: 50px;
+    height: 32px;
+}
+
+.message>span{
+    line-height: 32px;
+    padding: 0 10px;
+    display: inline-block;
+    white-space: nowrap;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0%{
+     transform: translateX(var(--width))
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+  
+  }
