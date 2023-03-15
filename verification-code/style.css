@@ -1,0 +1,55 @@
+*{
+    margin: 0 auto
+}
+
+.box {
+    margin-top: 300px;
+    position: relative;
+    width: 338px;
+    overflow: hidden;
+}
+.field-list {
+    display: flex;
+    justify-content: space-between;
+}
+.field-item {
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    line-height: 46px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+.field-item-focus {
+    border-color: #ff8f1f;
+}
+.field-item-focus::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 30px;
+    margin: 8px auto;
+    background: #cccccc;
+    animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+.field-input {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100% + 60px);
+    height: 48px;
+    padding: 0;
+    border: none;
+    outline: none;
+    opacity: 0;
+    background: transparent;
+}

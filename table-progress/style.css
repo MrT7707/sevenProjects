@@ -31,7 +31,7 @@ tr::after {
     width: var(--h-width);
     position: absolute;
     left: 0;
-    bottom: -10px;
+    bottom: 0px;
     /* margin-top: var(--h-height); */
     background-color: #08770c;
     transition: width 1s ease;
