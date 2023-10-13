@@ -1,8 +1,36 @@
 .comtain{
     width: 500px;
-    height: 500px;
+    /* height: 500px; */
     margin: 0 auto;
     margin-top: 200px;
+}
+
+.comtain-t{
+    margin: 0 auto;
+    margin-top: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.comtain-t .rightToLeft{
+    animation: moveLeft 10s linear infinite;
+}
+
+@keyframes moveLeft {
+    0%{
+     transform: translateX(100vw)
+    }
+    100%{
+        transform: translateX(calc(-100% + 375px));
+    } 
+}
+
+.rightToLeft span{
+    line-height: 32px;
+    padding: 5px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    margin-right: 20px;
 }
 
 .message{
@@ -27,6 +55,36 @@
     }
     100%{
         transform: translateX(-100%);
+    } 
+}
+
+.bottomToTop{
+    height: 192px;
+    overflow: hidden;
+    width: 500px;
+    border: 1px solid #000;
+}
+
+.bottomToTop ul , .bottomToTop li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bottomToTop li{
+    padding: 5px;
+}
+
+
+.bottomToTop ul{
+    animation: move 5s linear infinite;
+}
+
+@keyframes move {
+    0%{
+     transform: translateY(0)
     }
-  
-  }
+    100%{
+        transform: translateY(calc(-100% + 192px));
+    } 
+}
