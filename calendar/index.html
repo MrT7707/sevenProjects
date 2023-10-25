@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo</title>
+    <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+    <link href="http://unpkg.com/layui@2.8.17/dist/css/layui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="layui-padding-3">
+    <div class="ws-demo-static">
+      <div style="width: 100%" class="layui-inline" id="ID-laydate-static-1"></div>
+    </div>
+    <!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+    <script src="http://unpkg.com/layui@2.8.17/dist/layui.js"></script>
+    <script>
+    var data;
+    var colorList;
+
+    function setHtml(e,className,text, isStyle){
+            const item = document.createElement('div');
+            if(isStyle){
+              text.map((v) => {
+                  const i = document.createElement('div');
+                  i.classList.add(className);
+                  i.innerText = v;
+                  i.style.background = colorList[v];
+                  item.appendChild(i)
+              })
+            }else{
+              item.classList.add(className);
+              item.innerText = text;
+            }
+            e.appendChild(item)
+      }
+
+    function setDefault(){
+            const elements = document.getElementsByClassName('laydate-day-mark')
+            Array.prototype.forEach.call(elements, function (element) {
+                const [d, ...names] = element.innerText.split('-')
+                element.innerText = ''
+                setHtml(element,'diy-data',d)
+                setHtml(element,'diy-name',names, true)
+            });
+      }
+
+    function getNowRange(){
+        const e = document.getElementById('ID-laydate-static-1').getElementsByTagName('td')
+        const start = e[0].getAttribute('lay-ymd')
+        const end = e[e.length - 1].getAttribute('lay-ymd')
+        console.log(start, end)
+    }
+
+    // 模拟请求
+    const getData = () => new Promise((resolve, reject) => {
+          setTimeout(() => {
+              resolve({
+                  success: true,
+                  data: {
+                  '0-10-07': '7-小红-小黄-小白-小黑',
+                  '0-10-08': '8-小黑-小黄',
+                  '0-10-09': '9-小红-小明',
+                  '0-10-10': '10-小白-小黑',
+                  '0-10-11': '11-小白-小明',
+                  '0-10-12': '12-小黄-小明',
+                  '0-10-13': '13-小紫-小高',
+                  '0-10-14': '14-小黑-小明',
+                  '0-10-15': '15-小紫-小白',
+                  '0-10-16': '16-小红-小明',
+                  '0-10-17': '17-小紫-小黄',
+                  '0-10-18': '18-小红-小黄',
+                  '0-10-19': '19-小黑-小明',
+                  '0-10-20': '20-小高-小明',
+                  '0-10-21': '21-小红-小绿',
+                  '0-10-22': '22-小黄-小蓝',
+                  '0-10-23': '23-小红-小白',
+                  '0-10-24': '24-小紫-小明',
+                  '0-10-25': '25-小黑-小紫',
+                  '0-10-26': '26-小黑-小明',
+                  '0-10-27': '27-小红-小米',
+                  '0-10-28': '28-小紫-小黄',
+                  '0-10-29': '29-小黑-小白',
+                  '0-10-30': '30-小紫-小明',
+                  }
+              })
+          }, 400)
+    })
+
+    //颜色对象
+    var getRandomColor = function(){
+        		//随机生成RGB颜色
+  		let arr = [];
+  		for (var i = 0; i < 3; i++) {
+  		    // 暖色
+  		    arr.push(Math.floor(Math.random() * 128 + 64));
+  		    // 亮色
+  		    arr.push(Math.floor(Math.random() * 128 + 128));
+  		}
+  		let [r, g, b] = arr;
+  		// rgb颜色
+  		// var color=`rgb(${r},${g},${b})`;
+  		// 16进制颜色
+  		var color = `#${r.toString(16).length > 1 ? r.toString(16) : '0' + r.toString(16)}${g.toString(16).length > 1 ? g.toString(16) : '0' + g.toString(16)}${
+  			b.toString(16).length > 1 ? b.toString(16) : '0' + b.toString(16)}`;
+  		return color;
+    }
+
+    const getColorList = (v) => {
+        const obj = {}
+        Object.keys(v.data).forEach((i) => {
+            const [n1,...n] = v.data[i].split('-')
+            n.map((t) => {
+              if(!obj[t]){
+                obj[t] = getRandomColor()
+              }
+            })
+        })
+        console.log(obj)
+        colorList = obj
+    }
+
+
+    getData().then((v) => {
+        getColorList(v)
+        data = v
+        layui.use(function () {
+        var laydate = layui.laydate;
+        // 直接嵌套显示
+        laydate.render({
+          elem: '#ID-laydate-static-1',
+          position: 'static',
+          showBottom: false,
+          calendar: true,
+          theme: 'grid',
+          calendar: false,
+          id: 'test',
+          mark: v.data,
+          ready: (value) => {
+            // console.log(value)
+            setDefault()
+            getNowRange()
+          },
+          change: (value) => {
+            // console.log(value)
+            setDefault()
+            getNowRange()
+              // 弹出提示
+            //   laydate.hint('test', {
+            //     content: '提示内容'
+            //   });
+          }
+        });
+      });
+
+    })
+
+
+    </script>
+  </body>
+</html>

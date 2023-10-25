@@ -1,0 +1,97 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.layui-laydate-main{
+     width: 1000px;
+}
+
+.layui-laydate-content td, .layui-laydate-content th{
+    width: 150px;
+    height: 100px;
+}
+
+.laydate-day-mark{
+    height: 100%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.laydate-theme-grid .layui-laydate-content td>div{
+    /* height: 100px; */
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.laydate-theme-grid .layui-laydate-content td>div:has(>.laydate-day-mark){
+    height: 100px;
+    position: static;
+}
+
+.laydate-day-mark::after {
+    background-color: transparent;
+}
+
+.laydate-day-mark > .diy-data {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 2px;
+    right: 8px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.laydate-day-mark .diy-name{
+    line-height: 24px;
+    padding-right: 10px;
+    font-weight: 600;
+    display: inline-block;
+    /* background-color: #1e9fff; */
+    color: #FFF;
+    padding: 0 10px;
+    border-radius: 4px;
+    margin-right: 2px;
+    font-size: 12px;
+    /* border: 1px solid #ccc; */
+}
+
+.laydate-day-mark .diy-name:nth-child(2){
+    /* margin-top: 51px; */
+    /* background-color: #16b777; */
+}
+
+.layui-laydate-content td>div:hover,
+.layui-laydate-list li:hover,
+.layui-laydate-shortcut>li:hover{
+    background-color: transparent;
+}
+
+.layui-laydate .layui-this>div{
+    background-color: transparent !important;
+}
+
+.layui-laydate td.layui-this, .layui-laydate .layui-this>div{
+    background-color: transparent !important;
+}
+
+.layui-laydate .layui-this .diy-data, .layui-laydate .layui-this >div{
+    background-color: #FF0000 !important;
+    border-radius: 999px;
+}
+
+.layui-laydate .layui-this >div:has(>.laydate-day-mark){
+    background-color: transparent !important;
+}
