@@ -1,0 +1,71 @@
+
+h1{
+    text-align: center;
+}
+.container{
+    width: 950px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.left, .right{
+    background-color: #e8e8e8;
+    padding: 5px;
+}
+
+.left >div{
+    margin-bottom: 10px;
+}
+
+.item{
+    padding: 5px 20px;
+}
+
+.left{
+    margin-right: 10px;
+}
+
+.color1{
+    background-color: #FF0000;
+}
+.color2{
+    background-color: yellow;
+}
+.color3{
+    background-color: green;
+}
+.color4{
+    background-color: pink;
+}
+.color5{
+    background-color: blue;
+}
+.color6{
+    background-color: salmon;
+}
+.color7{
+    background-color: tomato;
+}
+
+.right td{
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    background-color: #FFF;
+}
+
+th.span{
+    background-color: #CCC;
+    padding: 0 10px;
+}
+td.heard{
+    background-color: #CCC;
+}
+
+tr.next{
+    margin-top: 40px;
+}
+
+.drop-over{
+    background-color: #CCC !important;
+}
