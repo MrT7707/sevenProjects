@@ -1,0 +1,63 @@
+.container{
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    :global{
+        .title{
+            text-align: center;
+            margin-top: 200px;
+            font-size: 50px;
+            color: #FFF;
+            letter-spacing: 10px;
+            background: linear-gradient(white, #090a0f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        @function getShadows($n){
+            $shadows: '#{random(100)}vw #{random(100)}vw #fff';
+            @for $i from 2 through $n {
+                $shadows: '#{$shadows},  #{random(100)}vw #{random(100)}vw #fff';
+            }
+            @return unquote($shadows)
+        }
+
+        $duration: 1000s;
+        $count: 1000s;
+        @for $i from 1 through 4 {
+            $duration: floor($duration / 2);
+            $count: floor($count / 2);
+            .layer#{$i}:local{
+                position: fixed;
+                // $size: unquote('#{random(100)}px');
+                // $duration: 5s;
+                $size: #{$i}px;
+                width: $size;
+                height: $size;
+                border-radius: 50%;
+                background: #f40;
+                box-shadow: getShadows($count);
+                animation: moveup $duration linear infinite;
+    
+                &::after{
+                    content: '';
+                    position: fixed;
+                    width: inherit;
+                    height: inherit;
+                    left: 0;
+                    top: 100vh;
+                    border-radius: inherit;
+                    box-shadow: inherit;
+                }
+    
+            }
+        }
+
+        @keyframes moveup {
+            to{
+                transform: translateY(-100vh);
+            }
+        }
+    }
+}
